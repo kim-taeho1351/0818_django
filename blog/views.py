@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 from .models import Post
@@ -19,7 +19,7 @@ def detail(request, post_id):
     return render(request, 'detail.html', {'post': post_detail})
 
 def new(request):
-    return render(request, 'post/new.html')
+    return render(request, 'new.html')
 
 def create(request):
     post = Post()
@@ -27,9 +27,9 @@ def create(request):
     post.body = request.GET['body']
     post.pub_date = timezone.datetime.now()
     post.save()
-    return redirect('/blog/' + str(post.id))
+    return redirect('/' + str(post.id))
 
 def delete(request, post_id):
-    post_nim = get_object_or_404(Post, pk=post_id)
+    post_num = get_object_or_404(Post, pk=post_id)
     post_num.delete()
     return redirect('/')

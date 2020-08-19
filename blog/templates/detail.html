@@ -6,8 +6,14 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.pub_date }}</p>
+        <p>{{ post.body }}</p>
+    </div>
+
     <div class="delete">
-        <p><a href="{% url 'delete' post_id %}">삭제하기</a></p>  
+        <p><a href="{% url 'delete' post.id %}">삭제하기</a></p>  
     </div>
 </body>
 </html>
